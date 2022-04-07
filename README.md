@@ -3,13 +3,151 @@
 
 ## 1.   what is Difference between var,let and const?
 -  const and let variable cannot be redeclered the variable and var variable can be redeclere.
+##### Why is the let variable cannot be redeclared?
+Because var variable can redeclare the variable in the same name and the same block and function it is a little confusing for the programmer to understand the script that's why we use a let variable. the let variable cannot redeclare the variable in the same name and same block and function. it is easy to understand the code 
+
+
+var variable
+
+function a()
+{
+	
+	var a=10;
+	console.log(a);
+	
+	var a=200;
+        console.log(a);
+
+
+}
+  - a();
+  - var a=100;
+  - console.log(a);
+
+------------------------------------
+let variable
+function a()
+{
+	
+	let a=10;
+	console.log(a);
+}
+  - let a=10;
+  - console.log(a);
+
+  - a();
+  - b();
+
+
+----------------------------
+
+function a()
+{
+	
+	let a=10;
+	console.log(a);
+}
+
+function b()
+{
+       let a=10;
+       console.log(a);
+}
+a();
+b();
+
+output->10,10
+  
 -  let and var variable can be change the value of variable and const variable cannot be change the value of varibale.
--  let and const variable can be access the inside a block but cannot be accesee the outside a block and var variable can be access the outside and inside a block.
+ {
+      - let a=10;
+      - console.log(a);
+      - a=20;
+      - console.log(a);
+ }
+
+-  var variable is a function scope. and let and const variable is a block scope.
+ function a()//function scope
+{
+	if(true)//block scope
+	{
+                 let a=10;
+		 var b=10;
+		 const c=10;
+	
+		 console.log(a);
+		 console.log(b);
+        	 console.log(c);
+	}
+    - console.log("let variable:",a);
+    - console.log("var variable:",b);
+    - console.log("const variable:",c);
+}
+a();
 
 
 
 
-## 2.  difference between call,apply and bind method()?
+
+## 2. what are the variable hoisting and function hoisting?
+
+ -  variable hoisting means the javascript engine moves the variable declaration to the top of the script.
+    
+    - console.log(counter);
+    - counter=1;//==>error =>counter not define
+    ----------------------------------------------
+    - var counter;//moves the top of the script
+    - console.log(counter);
+    - counter=1;
+    ----------------------------------------------
+    function hoisting similar to variable hoisting 
+    
+    - let x=10;
+    - let y=10;
+    - let result=add(x,y);
+    - console.log(result);
+
+    - function add(a,b)
+    - {
+    -   return a+b;
+    - }
+    ----------------------------------------
+    - function add(a, b)
+    - {
+    -   return a + b;
+    - }
+    -  let x = 20,
+    -  y = 10;
+    -  let result = add(x,y);
+    -  console.log(result);
+## 3. what is the first-class function?
+-  The first-class function means it is treated like another variable.
+   for example, the function can be passed as an argument to another function, the function can be returned to another function, and the function can be assigned as a    value to a variable
+//assigned as a variable
+
+   - let add=function(){
+
+   - console.log("hello");
+   - }
+   - add();
+
+//pass as a function arguments
+
+   - function add(){
+
+   - return "hello";
+   - }
+
+   - function sub(A,name)
+   - {
+   -  console.log(A() + "hi");
+   - }
+
+   - sub(add);
+
+------------------------
+
+## 4.  difference between call,apply and bind method()?
 
 - call method has invoked the function and allows you to pass arguments one by one.
 - apply method is invoked the function and its allows you to pass arguments as a array.
@@ -40,7 +178,7 @@ output=>5
 7
  
  
- ## 3.what is an array?
+ ## 5.what is an array?
 The array is a collection of similar data types but in javascript, we can store the different types of array elements.
 
 let a1=[1,2,3,"abc"];
@@ -48,7 +186,7 @@ console.log(a1);
 
 output->1,2,3,abc
 
-## 4.Difference between splice() and slice() in javascript?
+## 6.Difference between splice() and slice() in javascript?
  slice does not modify the original array.
 
 - let a=[3,4,5,6,7];
@@ -65,13 +203,13 @@ splice modify the original array.
 
 2)slice is used to pick the elements from an array. and a splice is used to delete and insert elements to the array
 
-## 5. what is the object of javascript?
+## 7. what is the object of javascript?
 In javascript there are 8 data types first seven data types are primitive datatypes because these datatypes contain a single value but the object data types contain a collection of various data
 the object can be created with brackets and a list of properties. A property is a key-value pair
 the given key is a name of property it is defined as a string and value can be anything
 
 
-## 6. what are the map of javascript?
+## 8. what are the map of javascript?
 The map is a collection of keyed data items just like an object.
 
 - new map()=>its a created a new map.
@@ -82,7 +220,7 @@ The map is a collection of keyed data items just like an object.
 - map .clear(key)->clear everything from map.
 - map.size->returns current elements of count
 
-## 7. what is set in javascript?
+## 9. what is set in javascript?
 A set is a collection of special value. each value may occur only once.
 
 - let m=new Set();
@@ -93,7 +231,7 @@ A set is a collection of special value. each value may occur only once.
 - for (let user of m)
 - 	console.log(user);//1,3
 
-## 8. Difference between map and object?
+## 10. Difference between map and object?
 #### objects are similar to maps in that both you set keys to value, retrieve those values, delete values
 
 1) The keys on objects are string, symbol, the integer on the maps keys are object, array, function.
